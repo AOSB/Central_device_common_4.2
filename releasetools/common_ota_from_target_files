@@ -447,6 +447,8 @@ def WriteFullOTAPackage(input_zip, output_zip):
   script.MakeSymlink("indeterminate.png", "/system/bootmenu/images/indeterminate4.png")
   script.MakeSymlink("indeterminate.png", "/system/bootmenu/images/indeterminate5.png")
   script.MakeSymlink("indeterminate.png", "/system/bootmenu/images/indeterminate6.png")
+# Fix for PA per
+  script.SetPermissionsRecursive("/system/etc/paranoid/properties.conf", 0, 0, 0777, 0777)
 # libaudio link fix
   script.MakeSymlink("/system/lib/hw/audio.a2dp.default.so", "/system/lib/liba2dp.so")
   script.ShowProgress(0.2, 0)
