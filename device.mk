@@ -138,6 +138,10 @@ $(call inherit-product, device/moto/jordan-common/bootmenu/bootmenu.mk)
 $(call inherit-product, build/target/product/full_base.mk)
 $(call inherit-product, frameworks/native/build/phone-hdpi-512-dalvik-heap.mk)
 
+# Add ubuntu conf
+PRODUCT_COPY_FILES += \
+    $(DEVICE_FOLDER)/umts_jordan.conf:system/etc/ubuntu-session.d/umts_jordan.conf
+
 # Should be after the full_base include, which loads languages_full
 PRODUCT_LOCALES += hdpi
 
