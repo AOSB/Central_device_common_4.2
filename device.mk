@@ -140,7 +140,11 @@ $(call inherit-product, frameworks/native/build/phone-hdpi-512-dalvik-heap.mk)
 
 # Add ubuntu conf
 PRODUCT_COPY_FILES += \
-    $(DEVICE_FOLDER)/umts_jordan.conf:system/etc/ubuntu-session.d/umts_jordan.conf
+    $(device_path)/umts_jordan.conf:system/etc/ubuntu-session.d/umts_jordan.conf
+
+# Fix ubuntu-session file for lower PPI/GRID_UNIT
+PRODUCT_COPY_FILES += \
+    $(device_path)/ubuntu-session:system/etc/ubuntu-session
 
 # Should be after the full_base include, which loads languages_full
 PRODUCT_LOCALES += hdpi

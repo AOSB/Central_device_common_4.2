@@ -1,0 +1,112 @@
+#!/bin/sh
+
+set -e
+
+################################################################################
+# Copyright 2012-2013 Canonical Ltd.
+#
+# This program is free software: you can redistribute it and/or modify it
+# under the terms of the GNU General Public License version 3, as published
+# by the Free Software Foundation.
+#
+# This program is distributed in the hope that it will be useful, but
+# WITHOUT ANY WARRANTY; without even the implied warranties of
+# MERCHANTABILITY, SATISFACTORY QUALITY, or FITNESS FOR A PARTICULAR
+# PURPOSE.  See the GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License along
+# with this program.  If not, see <http://www.gnu.org/licenses/>.
+################################################################################
+
+export HOME=/home/phablet
+
+logdir=$HOME/.ubuntu-session/logs/
+logfile=$logdir/ubuntu-session.log
+bashrc=$HOME/.bashrc
+
+[ -d $logdir ] || mkdir -p $logdir
+[ -e $logfile ] && cp $logfile $logfile.old
+
+echo "Redirecting output to local session logs"
+exec 3>&1 4>&2 >$logfile 2>&1
+
+on_stop()
+{
+    echo "Stopping services..."
+    for pid in $pids; do
+        echo -n "Stopping $pid"
+        if kill $pid >/dev/null 2>&1; then 
+            echo " done"
+        else
+            echo " failed"
+        fi
+    done
+    echo "Killing session bus..."
+    kill ${DBUS_SESSION_BUS_PID}
+    echo "Session stopped."
+}
+
+trap on_stop EXIT INT QUIT ILL KILL SEGV TERM
+
+# Default for any application executed from this script
+DEFAULT_OOMADJ=-10
+echo $DEFAULT_OOMADJ > /proc/$$/oom_adj
+
+# Initialize environment
+for var in $(cat /etc/environment); do
+    export $var
+done
+
+device=$(grep ^ro.product.device= /system/build.prop |sed -e 's/.*=//')
+echo "Device=$device"
+
+# defaults
+GRID_UNIT_PX=18
+QTWEBKIT_DPR=2.0
+FORM_FACTOR="phone"
+
+# override defaults by sourcing /etc/ubuntu-session.d/$device.conf
+# or counterpart in android file system if the config is not in session-manager yet
+[ -e /etc/ubuntu-session.d/$device.conf ] && . /etc/ubuntu-session.d/$device.conf || 
+[ -e /system/etc/ubuntu-session.d/$device.conf ] && . /system/etc/ubuntu-session.d/$device.conf
+
+grep -q GRID_UNIT_PX $bashrc || echo "export GRID_UNIT_PX=${GRID_UNIT_PX}" >> $bashrc
+grep -q QTWEBKIT_DPR $bashrc || echo "export QTWEBKIT_DPR=${QTWEBKIT_DPR}" >> $bashrc
+
+export GRID_UNIT_PX=${GRID_UNIT_PX}
+export QTWEBKIT_DPR=${QTWEBKIT_DPR}
+export FORM_FACTOR=${FORM_FACTOR}
+
+
+if [ -z "$DBUS_SESSION_BUS_ADDRESS" ]; then
+    echo "Starting session bus"
+    export $(dbus-launch)
+    if [ -z "$DBUS_SESSION_BUS_ADDRESS" ]; then
+        echo "Unable to start session bus"
+        exit 1
+    fi
+fi
+
+echo "DBUS_SESSION_BUS_ADDRESS=${DBUS_SESSION_BUS_ADDRESS}" > $HOME/.dbus-session
+echo "DBUS_SESSION_BUS_PID=${DBUS_SESSION_BUS_PID}" >> $HOME/.dbus-session
+
+while read service; do
+    delay=$(echo $service|awk '{print $1}')
+    command=$(echo $service|awk '{print $2}')
+    args=$(echo $service|awk '{$1=$2=""; print}'|sed -e 's/^[ \t]*//')
+
+    if $(echo $command|grep -q /); then
+        command=$(basename $command)
+    fi
+    sleep $delay
+    $command $args >"$HOME/.ubuntu-session/logs/$command.log" 2>&1 &
+    pids="$! $pids"
+    echo "Started $command with pid $! ($delay secs start delay)"
+    if [ "$command" = "qml-phone-shell" ]; then
+        shell_pid=$!
+        echo "Got Shell pid = $shell_pid"
+    fi
+done < /etc/$FORM_FACTOR-services
+
+wait $shell_pid
+on_stop
