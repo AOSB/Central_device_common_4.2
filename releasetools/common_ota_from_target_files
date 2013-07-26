@@ -95,7 +95,7 @@ OPTIONS.omit_prereq = False
 OPTIONS.extra_script = None
 OPTIONS.aslr_mode = True
 OPTIONS.worker_threads = 3
-OPTIONS.backuptool = True
+OPTIONS.backuptool = False
 OPTIONS.override_device = 'auto'
 
 def MostPopularKey(d, default):
@@ -449,6 +449,12 @@ def WriteFullOTAPackage(input_zip, output_zip):
   script.MakeSymlink("indeterminate.png", "/system/bootmenu/images/indeterminate6.png")
 # libaudio link fix
   script.MakeSymlink("/system/lib/hw/audio.a2dp.default.so", "/system/lib/liba2dp.so")
+
+  # Update ubuntu-session from /system/etc/ubuntu-session
+  script.Mount("/data")
+  script.UpdateUbuntuSession()
+  script.Unmount("/data")
+
   script.ShowProgress(0.2, 0)
 
   if OPTIONS.backuptool:

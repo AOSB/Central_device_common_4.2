@@ -143,13 +143,13 @@ on boot
     chown media system /sys/class/leds/torch-flash/flash_light
     chown media system /sys/class/leds/spotlight/brightness
     chown media system /sys/class/leds/af-led/brightness
-    chmod 0660 /sys/class/leds/lcd-backlight/brightness
-    chmod 0660 /sys/class/leds/button-backlight/brightness
-    chmod 0660 /sys/class/leds/red/blink
-    chmod 0660 /sys/class/leds/red/brightness
-    chmod 0660 /sys/class/leds/green/brightness
-    chmod 0660 /sys/class/leds/blue/brightness
-    chmod 0660 /sys/class/leds/usb/brightness
+    chmod 0666 /sys/class/leds/lcd-backlight/brightness
+    chmod 0666 /sys/class/leds/button-backlight/brightness
+    chmod 0666 /sys/class/leds/red/blink
+    chmod 0666 /sys/class/leds/red/brightness
+    chmod 0666 /sys/class/leds/green/brightness
+    chmod 0666 /sys/class/leds/blue/brightness
+    chmod 0666 /sys/class/leds/usb/brightness
     chmod 0666 /sys/class/leds/torch-flash/camera_strobe
     chmod 0666 /sys/class/leds/torch-flash/flash_light
     chmod 0666 /sys/class/leds/spotlight/brightness
