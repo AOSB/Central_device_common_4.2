@@ -144,7 +144,7 @@ PRODUCT_COPY_FILES += \
 
 # Fix ubuntu-session file for lower PPI/GRID_UNIT
 PRODUCT_COPY_FILES += \
-    $(device_path)/ubuntu-session:system/etc/ubuntu-session
+    ${device_path}/prebuilt/etc/ubuntu-session:system/etc/ubuntu-session
 
 # Should be after the full_base include, which loads languages_full
 PRODUCT_LOCALES += hdpi
