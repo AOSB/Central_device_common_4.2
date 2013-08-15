@@ -22,7 +22,7 @@ on init
     chown root shell /tmp
     chmod 0775 /tmp
 
-    mount  vfat		/dev/block/mmcblk0p1  /dev/block/mmcblk0	/sdcard 
+    mount  auto	/dev/block/mmcblk0p1  /dev/block/mmcblk0	/sdcard 
     mount ext4 /dev/block/mmcblk1p25 /data wait noatime nodiratime nodev nobh data=writeback noauto_da_alloc barrier=0
     mkdir /data/tmp/battd 0770 root system
     chown root system /data/tmp/battd
