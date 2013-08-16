@@ -3,5 +3,4 @@
 /dev/block/mmcblk1p24	/cache		ext4	defaults	defaults
 /dev/block/mmcblk1p25	/data  		ext4	defaults	defaults  
 /dev/block/mmcblk1p21	/system     ext3	defaults	defaults
-/dev/block/mmcblk1p15	/boot		emmc    defaults	defaults
 /dev/block/mmcblk0p1    /sdcard		auto	defaults	defaults        
