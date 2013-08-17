@@ -45,7 +45,7 @@ COMMON_GLOBAL_CFLAGS += -DTARGET_OMAP3 -DOMAP_COMPAT -DBINDER_COMPAT -DUSES_AUDI
 TARGET_GLOBAL_CFLAGS += -mtune=cortex-a8 -mfpu=neon -mfloat-abi=softfp
 TARGET_GLOBAL_CPPFLAGS += -mtune=cortex-a8 -mfpu=neon -mfloat-abi=softfp
 
-TARGET_GCC_VERSION := 4.6
+TARGET_GCC_VERSION := 4.7
 TARGET_USE_O3 := true
 
 # Wifi related defines
