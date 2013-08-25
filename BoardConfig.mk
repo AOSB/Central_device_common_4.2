@@ -44,9 +44,10 @@ ARCH_ARM_HAVE_TLS_REGISTER := true
 COMMON_GLOBAL_CFLAGS += -DTARGET_OMAP3 -DOMAP_COMPAT -DBINDER_COMPAT -DUSES_AUDIO_LEGACY
 TARGET_GLOBAL_CFLAGS += -mtune=cortex-a8 -mfpu=neon -mfloat-abi=softfp
 TARGET_GLOBAL_CPPFLAGS += -mtune=cortex-a8 -mfpu=neon -mfloat-abi=softfp
+TARGET_ARCH_LOWMEM := true
 
 TARGET_GCC_VERSION := 4.7
-#TARGET_USE_O3 := true
+TARGET_USE_O3 := true
 
 # Wifi related defines
 USES_TI_MAC80211 := true
