@@ -85,6 +85,11 @@ PRODUCT_PACKAGES += \
 # FIXME in repo 
 PRODUCT_PACKAGES += rild
 
+# legacy version of skia
+# fixes the app switcher previews
+PRODUCT_PACKAGES += \
+    libskia_legacy
+
 # ICS sound
 PRODUCT_PACKAGES += \
 	hcitool hciattach hcidump \
