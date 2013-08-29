@@ -44,6 +44,7 @@ ARCH_ARM_HAVE_TLS_REGISTER := true
 COMMON_GLOBAL_CFLAGS += -DTARGET_OMAP3 -DOMAP_COMPAT -DBINDER_COMPAT -DUSES_AUDIO_LEGACY
 TARGET_GLOBAL_CFLAGS += -mtune=cortex-a8 -mfpu=neon -mfloat-abi=softfp
 TARGET_GLOBAL_CPPFLAGS += -mtune=cortex-a8 -mfpu=neon -mfloat-abi=softfp
+TARGET_ARCH_LOWMEM := true
 
 # Wifi related defines
 USES_TI_MAC80211 := true
@@ -170,7 +171,7 @@ hboot:
 
 # If kernel sources are present in repo, here is the location
 TARGET_KERNEL_SOURCE := $(ANDROID_BUILD_TOP)/jordan-kernel
-TARGET_KERNEL_CUSTOM_TOOLCHAIN := arm-eabi-4.4.3
+TARGET_KERNEL_CUSTOM_TOOLCHAIN := arm-eabi-4.4.3/bin/arm-eabi-
 BOARD_KERNEL_CMDLINE := console=/dev/null mem=498M init=/init omapfb.vram=0:4M
 #TARGET_PREBUILT_KERNEL := $(ANDROID_BUILD_TOP)/device/moto/jordan-common/kernel
 # Extra : external modules sources
