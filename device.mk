@@ -36,20 +36,18 @@ PRODUCT_PROPERTY_OVERRIDES += \
 	persist.sys.usb.config=mass_storage,adb \
 	ro.product.use_charge_counter=1 \
 	hwui.use.blacklist=true \
-	ro.sf.lcd_density=240 
+	ro.sf.lcd_density=240 \
 
+
+# SGX540 is slower with the scissor optimization enabled
 PRODUCT_PROPERTY_OVERRIDES += \
-       ro.bq.gpu_to_cpu_unsupported=1
+       ro.hwui.disable_scissor_opt=true
 
 # wifi props
 PRODUCT_PROPERTY_OVERRIDES += \
 	wifi.interface=wlan0 \
 	softap.interface=wlan0 \
-	wifi.supplicant_scan_interval=60 
-
-# SGX540 is slower with the scissor optimization enabled
-PRODUCT_PROPERTY_OVERRIDES += \
-       ro.hwui.disable_scissor_opt=true
+	wifi.supplicant_scan_interval=60 \
 
 # telephony props
 PRODUCT_PROPERTY_OVERRIDES += \
@@ -58,7 +56,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
 	ro.telephony.call_ring.multiple=false \
 	ro.telephony.call_ring.delay=3000 \
 	ro.telephony.default_network=3 \
-	mobiledata.interfaces=rmnet0 
+	mobiledata.interfaces=rmnet0 \
 
 DEVICE_PACKAGE_OVERLAYS += device/moto/jordan-common/overlay
 
@@ -85,16 +83,11 @@ PRODUCT_PACKAGES += \
 # FIXME in repo 
 PRODUCT_PACKAGES += rild
 
-# legacy version of skia
-# fixes the app switcher previews
-PRODUCT_PACKAGES += \
-    libskia_legacy
-
 # ICS sound
 PRODUCT_PACKAGES += \
 	hcitool hciattach hcidump \
 	libaudioutils audio.a2dp.default  \
-	libaudiohw_legacy 
+	libaudiohw_legacy \
 
 # TO FIX for ICS
 PRODUCT_PACKAGES += power.omap3
@@ -116,7 +109,7 @@ PRODUCT_PACKAGES += charge_only_mode mot_boot_mode
 PRODUCT_PACKAGES += librs_jni
 
 # CM9 apps
-PRODUCT_PACKAGES += Torch HwaSettings
+PRODUCT_PACKAGES += Torch HwaSettings make_ext4fs
 
 # Experimental TI OpenLink
 PRODUCT_PACKAGES += libnl_2 iw libbt-vendor uim-sysfs
@@ -141,7 +134,7 @@ PRODUCT_PACKAGES += \
 PRODUCT_COPY_FILES += \
     $(OUT)/ramdisk.img:system/bootmenu/2nd-boot/ramdisk \
     $(OUT)/kernel:system/bootmenu/2nd-boot/zImage \
-    $(OUT)/utilities/lsof:system/bootmenu/binary/lsof 
+    $(OUT)/utilities/lsof:system/bootmenu/binary/lsof \
 
 # Blobs and bootmenu stuff
 $(call inherit-product, device/moto/jordan-common/jordan-blobs.mk)
@@ -150,8 +143,7 @@ $(call inherit-product, build/target/product/full_base.mk)
 $(call inherit-product, frameworks/native/build/phone-hdpi-512-dalvik-heap.mk)
 
 # Should be after the full_base include, which loads languages_full
-PRODUCT_LOCALES += normal hdpi
+PRODUCT_LOCALES += hdpi
 
 PRODUCT_NAME := full_jordan
 PRODUCT_DEVICE := MB52x
-
