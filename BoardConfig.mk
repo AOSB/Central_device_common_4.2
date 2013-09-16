@@ -45,6 +45,10 @@ TARGET_GLOBAL_CFLAGS += -mtune=cortex-a8 -mfpu=neon -mfloat-abi=softfp
 TARGET_GLOBAL_CPPFLAGS += -mtune=cortex-a8 -mfpu=neon -mfloat-abi=softfp
 TARGET_ARCH_LOWMEM := true
 
+# Conserve memory in the Dalvik heap
+# Details: https://github.com/CyanogenMod/android_dalvik/commit/15726c81059b74bf2352db29a3decfc4ea9c1428
+TARGET_ARCH_LOWMEM := true
+
 # Wifi related defines
 USES_TI_MAC80211 := true
 WPA_SUPPLICANT_VERSION           := VER_0_8_X_TI
@@ -68,11 +72,6 @@ BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := device/moto/jordan-common/bluetoo
 BOARD_WPAN_DEVICE := true
 # Usb Specific
 BOARD_VOLD_EMMC_SHARES_DEV_MAJOR := true
-
-# Build options
-BOARD_USERDATAIMAGE_PARTITION_SIZE := 1330343936
-BOARD_SYSTEMIMAGE_PARTITION_SIZE := 325000000
-BOARD_FLASH_BLOCK_SIZE := 131072
 
 # OMX Stuff
 HARDWARE_OMX := true
