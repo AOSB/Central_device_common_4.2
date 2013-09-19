@@ -68,4 +68,8 @@ PRODUCT_COPY_FILES += $(shell test -d device/moto/jordan-common/modules/prebuilt
 	find device/moto/jordan-common/modules/prebuilt -name '*.ko' \
 	-printf '%p:system/lib/modules/%f ')
 
+# frandom
+PRODUCT_COPY_FILES += \
+	$(device_path)/prebuilt/etc/init.d/00random:system/etc/init.d/00random \
+
 #end of jordan-blobs.mk
