@@ -37,6 +37,9 @@ PRODUCT_PROPERTY_OVERRIDES += \
 	ro.product.use_charge_counter=1 \
 	hwui.use.blacklist=true \
 	ro.sf.lcd_density=240 \
+	ro.bq.gpu_to_cpu_unsupported=1 \
+	dalvik.vm.debug.alloc=0 \
+	ro.hwui.disable_scissor_opt=true \
 
 # wifi props
 PRODUCT_PROPERTY_OVERRIDES += \
@@ -76,7 +79,7 @@ PRODUCT_PACKAGES += \
 	com.android.future.usb.accessory
 
 # FIXME in repo 
-PRODUCT_PACKAGES += rild
+PRODUCT_PACKAGES += rild Dialer
 
 # legacy version of skia
 # fixes the app switcher previews
