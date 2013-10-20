@@ -92,6 +92,8 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     libskia_legacy
 
+ADDITIONAL_BUILD_PROPERTIES += sys.mem.max_hidden_apps=4
+
 # TO FIX for ICS
 PRODUCT_PACKAGES += power.omap3
 
@@ -104,7 +106,6 @@ PRODUCT_PACKAGES += libOMX.TI.JPEG.Encoder
 
 # Defy stuff
 PRODUCT_PACKAGES += libfnc DefyParts MotoFM MotoFMService
-
 # Core stuff
 PRODUCT_PACKAGES += charge_only_mode mot_boot_mode
 
