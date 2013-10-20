@@ -41,12 +41,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
 	dalvik.vm.debug.alloc=0 \
 	ro.hwui.disable_scissor_opt=true \
 
-# Support for Browser's saved page feature. This allows
-# for pages saved on previous versions of the OS to be
-# viewed on the current OS.
-PRODUCT_PACKAGES += \
-    libskia_legacy
-
 # wifi props
 PRODUCT_PROPERTY_OVERRIDES += \
 	wifi.interface=wlan0 \
