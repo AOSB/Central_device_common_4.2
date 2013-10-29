@@ -49,7 +49,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 # telephony props
 PRODUCT_PROPERTY_OVERRIDES += \
-	ro.telephony.ril.v3=skipbrokendatacall,signalstrength \
+	ro.telephony.ril.v3=signalstrength \
 	ro.telephony.ril_class=MotoWrigley3GRIL \
 	ro.telephony.call_ring.multiple=false \
 	ro.telephony.call_ring.delay=3000 \
@@ -91,6 +91,11 @@ PRODUCT_PACKAGES += \
 	hcitool hciattach hcidump \
 	libaudioutils audio.a2dp.default  \
 	libaudiohw_legacy \
+
+# legacy version of skia
+# fixes the app switcher previews
+PRODUCT_PACKAGES += \
+    libskia_legacy
 
 # TO FIX for ICS
 PRODUCT_PACKAGES += power.omap3
