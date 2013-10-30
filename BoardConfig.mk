@@ -44,8 +44,8 @@ COMMON_GLOBAL_CFLAGS += -DTARGET_OMAP3 -DOMAP_COMPAT -DBINDER_COMPAT -DUSES_AUDI
 TARGET_GLOBAL_CFLAGS += -mtune=cortex-a8 -mfpu=neon -mfloat-abi=softfp
 TARGET_GLOBAL_CPPFLAGS += -mtune=cortex-a8 -mfpu=neon -mfloat-abi=softfp
 
-#TARGET_GCC_VERSION := 4.7
-#TARGET_USE_O3 := true
+TARGET_GCC_VERSION := 4.7
+TARGET_USE_O3 := true
 
 # Conserve memory in the Dalvik heap
 # Details: https://github.com/CyanogenMod/android_dalvik/commit/15726c81059b74bf2352db29a3decfc4ea9c1428
