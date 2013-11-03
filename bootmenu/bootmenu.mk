@@ -77,3 +77,13 @@ PRODUCT_COPY_FILES += \
 	$(bm_device)/temp/bootmenu:system/bin/bootmenu \
 	$(OUT)/ramdisk-recovery.img:system/bootmenu/2nd-boot/ramdisk-recovery \
 
+#Bluetooth
+PRODUCT_COPY_FILES += \
+	$(bm_device)/temp/libbluedroid.so:system/lib/libbluedroid.so \
+	$(bm_device)/temp/libbluetooth_jni.so:system/lib/libbluetooth_jni.so \
+	$(bm_device)/temp/libbt-hci.so:system/lib/libbt-hci.so \
+	$(bm_device)/temp/libbt-utils.so:system/lib/libbt-utils.so \
+	$(bm_device)/temp/libbt-vendor.so:system/vendor/lib/libbt-vendor.so \
+
+
+
