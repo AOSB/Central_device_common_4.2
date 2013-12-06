@@ -101,6 +101,16 @@ PRODUCT_PACKAGES += libOMX.TI.WBAMR.encode libOMX.TI.MP3.decode libOMX.TI.WBAMR.
 PRODUCT_PACKAGES += libOMX.TI.Video.Decoder libOMX.TI.Video.encoder
 PRODUCT_PACKAGES += libOMX.TI.JPEG.Encoder
 
+#PA stuff
+# Additional apps
+PRODUCT_PACKAGES += \
+    Apollo \
+    Torch \
+    DSPManager \
+    libcyanogen-dsp \
+    audio_effects.conf \
+	lsof
+
 # Defy stuff
 PRODUCT_PACKAGES += libfnc DefyParts MotoFM MotoFMService
 
