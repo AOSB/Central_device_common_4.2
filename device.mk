@@ -108,11 +108,7 @@ PRODUCT_PACKAGES += \
     OmniTorch \
     DSPManager \
     libcyanogen-dsp \
-    audio_effects.conf \
-	lsof \
-	e2fsck \
-	mke2fs \
-	tune2fs 
+    audio_effects.conf 
 
 # Defy stuff
 PRODUCT_PACKAGES += libfnc DefyParts MotoFM MotoFMService
