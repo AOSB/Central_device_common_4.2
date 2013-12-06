@@ -105,7 +105,6 @@ PRODUCT_PACKAGES += libOMX.TI.JPEG.Encoder
 # Additional apps
 PRODUCT_PACKAGES += \
     Apollo \
-    OmniTorch \
     DSPManager \
     libcyanogen-dsp \
     audio_effects.conf 
