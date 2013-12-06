@@ -16,13 +16,6 @@
     {
         "remote":       "gh",
         "account":      "Quarx2k",
-        "repository":   "proprietary_vendor_motorola",
-        "target_path":  "vendor/motorola",
-        "revision":     "jellybean"
-    },
-    {
-        "remote":       "gh",
-        "account":      "Quarx2k",
         "repository":   "jordan-kernel",
         "target_path":  "jordan-kernel",
         "revision":     "AeroKernel"
