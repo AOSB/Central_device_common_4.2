@@ -1,0 +1,44 @@
+[
+	{
+        "remote":       "gh",
+        "account":      "Quarx2k",
+        "repository":   "android_external_bootmenu",
+        "target_path":  "external/bootmenu",
+        "revision":     "jellybean"
+    },
+    {
+        "remote":       "gh",
+        "account":      "royale1223",
+        "repository":   "HwaSettings",
+        "target_path":  "packages/apps/HwaSettings",
+        "revision":     "master"
+    },
+    {
+        "remote":       "gh",
+        "account":      "Kayant",
+        "repository":   "Central_device_common_4.2",
+        "target_path":  "device/moto/jordan-common",
+        "revision":     "PA"
+    },
+    {
+        "remote":       "gh",
+        "account":      "Quarx2k",
+        "repository":   "android_device_moto_mb526",
+        "target_path":  "device/moto/mb526",
+        "revision":     "cm10.2-2.6.32"
+    },
+    {
+        "remote":       "gh",
+        "account":      "Quarx2k",
+        "repository":   "proprietary_vendor_motorola",
+        "target_path":  "vendor/motorola",
+        "revision":     "jellybean"
+    },
+    {
+        "remote":       "gh",
+        "account":      "Quarx2k",
+        "repository":   "jordan-kernel",
+        "target_path":  "jordan-kernel",
+        "revision":     "AeroKernel"
+    }
+]
