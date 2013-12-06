@@ -105,11 +105,14 @@ PRODUCT_PACKAGES += libOMX.TI.JPEG.Encoder
 # Additional apps
 PRODUCT_PACKAGES += \
     Apollo \
-    Torch \
+    OmniTorch \
     DSPManager \
     libcyanogen-dsp \
     audio_effects.conf \
-	lsof
+	lsof \
+	e2fsck \
+	mke2fs \
+	tune2fs 
 
 # Defy stuff
 PRODUCT_PACKAGES += libfnc DefyParts MotoFM MotoFMService
