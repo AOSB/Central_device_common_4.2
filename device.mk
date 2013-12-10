@@ -92,7 +92,7 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
 	com.android.future.usb.accessory
 
-RODUCT_PACKAGES := \
+PRODUCT_PACKAGES := \
     VoiceDialer
 
 # ICS sound
@@ -120,7 +120,7 @@ PRODUCT_PACKAGES += \
     audio_effects.conf 
 
 # Defy stuff
-PRODUCT_PACKAGES += libfnc DefyParts MotoFM MotoFMService
+PRODUCT_PACKAGES += libfnc DefyParts #MotoFM MotoFMService
 
 # Core stuff
 PRODUCT_PACKAGES += charge_only_mode mot_boot_mode
