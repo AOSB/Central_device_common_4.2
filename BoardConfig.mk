@@ -50,6 +50,7 @@ TARGET_GLOBAL_CPPFLAGS += -mtune=cortex-a8 -mfpu=neon -mfloat-abi=softfp
 # Conserve memory in the Dalvik heap
 # Details: https://github.com/CyanogenMod/android_dalvik/commit/15726c81059b74bf2352db29a3decfc4ea9c1428
 TARGET_ARCH_LOWMEM := true
+TARGET_ARCH_HAVE_NEON := true
 
 # Wifi related defines
 USES_TI_MAC80211 := true
@@ -69,7 +70,7 @@ WIFI_DRIVER_MODULE_NAME          := "wl12xx_sdio"
 BOARD_HAVE_BLUETOOTH := true
 TARGET_CUSTOM_BLUEDROID := ../../../device/moto/jordan-common/bluedroid.c
 BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := device/moto/jordan-common/bluetooth
-BOARD_WPAN_DEVICE := true
+BOARD_HAVE_BLUETOOTH_TI := true
 # Usb Specific
 BOARD_VOLD_EMMC_SHARES_DEV_MAJOR := true
 
@@ -138,10 +139,14 @@ BOARD_USES_AUDIO_LEGACY := true
 TARGET_PROVIDES_LIBAUDIO := true
 BOARD_USE_KINETO_COMPATIBILITY := true
 TARGET_BOOTANIMATION_USE_RGB565 := true
+TARGET_BOOTANIMATION_PRELOAD := true
 BOARD_USE_HARDCODED_FAST_TRACK_LATENCY_WHEN_DENIED := 160
 BOARD_USES_LEGACY_RIL :=true
 BOARD_USE_LEGACY_SENSORS_FUSION := false
 BOARD_HARDWARE_CLASS := device/moto/jordan-common/cmhw/
+
+# Override healthd HAL to use charge_counter for 1%
+BOARD_HAL_STATIC_LIBRARIES := libhealthd.omap3
 
 # Release tool
 TARGET_PROVIDES_RELEASETOOLS := true
